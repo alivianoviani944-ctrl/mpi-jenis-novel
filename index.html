@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HPMI — Dunia Novel</title>
+<style>
+:root{--ink:#20213d;--muted:#686987;--cream:#fffaf0;--paper:#ffffff;--purple:#6653a6;--violet:#8e78d8;--gold:#f1bd62;--pink:#f4b7c5;--mint:#b9e3d2;--line:#e9e3f3;--shadow:0 14px 38px #31235d18}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#f5f0ff 0,#fffaf0 430px,#fffaf0 100%);font-family: "Trebuchet MS",Arial,sans-serif;color:var(--ink);line-height:1.6}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#29234f,#5e4a95 58%,#9a80c9);color:#fff;padding:30px 20px 44px;border-radius:0 0 32px 32px}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;pointer-events:none}.hero:before{width:240px;height:240px;right:-70px;top:-85px;background:#f1bd6230}.hero:after{width:160px;height:160px;right:22%;bottom:-115px;border:1px solid #ffffff50}
+.hero-inner{max-width:1050px;margin:auto;position:relative;z-index:1}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid #ffffff50;background:#ffffff16;padding:6px 12px;border-radius:30px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(2.2rem,6vw,4.5rem);line-height:1.03;margin:20px 0 14px;max-width:720px;letter-spacing:-.04em}.hero p{max-width:650px;color:#eee9ff;font-size:1.05rem;margin:0}.hero-art{font-size:clamp(3rem,9vw,6rem);margin-top:24px;letter-spacing:8px;filter:drop-shadow(0 8px 12px #19133655)}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.stat{background:#ffffff18;border:1px solid #ffffff30;border-radius:14px;padding:9px 13px;font-size:.84rem}
+nav{max-width:1050px;margin:-20px auto 24px;padding:0 14px;position:relative;z-index:3;display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin}
+nav button{flex:0 0 auto;border:1px solid #e6dff3;background:#fff;color:#534777;border-radius:14px;padding:11px 14px;font-weight:700;box-shadow:0 5px 16px #30234c0c;cursor:pointer}
+nav button.active{background:var(--gold);color:#38284d;border-color:var(--gold)}
+main{max-width:1050px;margin:0 auto;padding:0 16px 40px}.panel{display:none;animation:rise .3s ease}.panel.active{display:block}@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.section-head{display:flex;gap:14px;align-items:flex-start;margin:10px 0 20px}.section-icon{flex:0 0 52px;height:52px;border-radius:17px;background:#ece5ff;display:grid;place-items:center;font-size:1.55rem}.section-head h2{font-size:clamp(1.6rem,4vw,2.2rem);margin:0;letter-spacing:-.03em}.section-head p{margin:3px 0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:19px;box-shadow:var(--shadow);min-width:0}.card h3{margin:5px 0 8px;font-size:1.1rem}.card p{margin:7px 0;color:#595a77}.emoji{font-size:2rem}.tag{display:inline-block;background:#f0eaff;color:#5d4c92;padding:4px 9px;border-radius:20px;font-size:.75rem;font-weight:700;margin-bottom:6px}.callout{background:#fff0d3;border-left:5px solid var(--gold);padding:15px 17px;border-radius:12px;margin:18px 0}.quote{font-family:Georgia,serif;font-size:1.25rem;line-height:1.5;color:#574486}.btn{border:0;border-radius:12px;padding:11px 16px;background:var(--purple);color:#fff;font-weight:700;cursor:pointer;margin:5px 4px 0 0}.btn.alt{background:#eee8ff;color:#514080}.btn.gold{background:var(--gold);color:#38284d}.btn:focus,nav button:focus,input:focus,select:focus,textarea:focus{outline:3px solid #c8b7ff;outline-offset:2px}
+.quiz{background:#fff;border:1px solid var(--line);padding:18px;border-radius:18px;margin:13px 0;box-shadow:0 6px 20px #31235d0a}.quiz p{font-weight:700;margin:0 0 12px}.options{display:grid;gap:8px}.option{display:flex;gap:9px;align-items:flex-start;padding:10px 12px;border:1px solid #e8e3f1;border-radius:12px;cursor:pointer;background:#fff}.option:has(input:checked){background:#f1ecff;border-color:#9c8bda}.feedback{font-weight:700;margin-top:9px;font-size:.92rem}.good{color:#207856}.bad{color:#a54c52}.score{background:#29234f;color:white;border-radius:18px;padding:16px;margin:15px 0}.score strong{color:var(--gold);font-size:1.35rem}.field{width:100%;padding:11px;border:1px solid #ded6ec;border-radius:11px;font:inherit;background:#fff;margin:5px 0 12px}textarea.field{min-height:90px;resize:vertical}.progress{height:8px;border-radius:10px;background:#e7e0f3;overflow:hidden;margin:8px 0 18px}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--gold));transition:width .3s}.checklist{display:grid;gap:9px}.checklist label{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--line);padding:12px;border-radius:12px}.source-list li{margin:8px 0;overflow-wrap:anywhere}footer{text-align:center;color:#77718c;padding:25px 16px 38px;font-size:.9rem}.small{font-size:.88rem;color:var(--muted)}.book-row{display:flex;gap:12px;align-items:center}.book{width:60px;height:82px;border-radius:7px 12px 12px 7px;background:linear-gradient(90deg,#4a3978 0 12%,#8b72c9 13% 100%);box-shadow:4px 5px 0 #d5c8ef;display:grid;place-items:center;color:white;font-size:1.5rem;flex-shrink:0}
+@media(max-width:740px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.two{grid-template-columns:1fr}.hero{padding-top:24px}.card{padding:15px}nav{margin-bottom:18px}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.hero-art{letter-spacing:2px}.stats{gap:7px}.stat{font-size:.78rem}.section-icon{flex-basis:44px;height:44px}.card{border-radius:16px}}
+@media print{body{background:white}.hero{border-radius:0}.hero-art,nav,.btn{display:none!important}.panel{display:block!important;break-inside:avoid}.card,.quiz{box-shadow:none}}
+</style>
+</head>
+<body>
+<header class="hero">
+ <div class="hero-inner">
+  <span class="eyebrow">✦ Media Pembelajaran Interaktif</span>
+  <h1>Selamat Datang<br>di Dunia Novel!</h1>
+  <p>Jelajahi berbagai jenis novel, temukan cerita yang cocok denganmu, dan uji pengetahuanmu melalui petualangan belajar yang seru.</p>
+  <div class="hero-art" aria-hidden="true">📚 ✨ 🌙</div>
+  <div class="stats"><span class="stat">📖 6 bagian materi</span><span class="stat">🎯 Kuis interaktif</span><span class="stat">📱 Ramah HP</span></div>
+ </div>
+</header>
+<nav aria-label="Menu utama">
+ <button class="active" data-tab="intro">🏡 Beranda</button><button data-tab="materi">📚 Materi</button><button data-tab="simulasi">🎭 Simulasi</button><button data-tab="belajar">🧠 Belajar</button><button data-tab="latihan">🎯 Berlatih</button><button data-tab="refleksi">🌱 Refleksi</button><button data-tab="penutup">🏆 Penutup</button>
+</nav>
+<main>
+<section class="panel active" id="intro">
+ <div class="section-head"><div class="section-icon">🌟</div><div><h2>Petualangan Dimulai!</h2><p>Mulai dari sini, lalu jelajahi menu di atas.</p></div></div>
+ <div class="grid two">
+  <article class="card"><span class="tag">01 · Kenali</span><h3>📖 Apa itu novel?</h3><p>Novel adalah karya prosa fiksi yang menceritakan kehidupan tokoh melalui rangkaian peristiwa, konflik, latar, dan perkembangan karakter.</p><p class="quote">“Setiap novel adalah pintu menuju dunia yang berbeda.”</p></article>
+  <article class="card"><span class="tag">02 · Jelajahi</span><h3>🗺️ Pilih perjalananmu</h3><p>Pelajari jenis novel berdasarkan isi, tema, dan dunia cerita. Setelah itu, coba simulasi dan latihan untuk menguji pemahamanmu.</p><button class="btn" onclick="go('materi')">Mulai belajar →</button></article>
+ </div>
+ <div class="callout"><strong>🎒 Tujuan pembelajaran:</strong> Setelah menggunakan media ini, peserta didik dapat menjelaskan pengertian novel, membedakan jenis-jenis novel, mengidentifikasi ciri-cirinya, dan menganalisis contoh cerita.</div>
+ <div class="grid">
+  <article class="card"><div class="emoji">🔍</div><h3>Amati</h3><p>Baca ringkasan materi dan ciri setiap jenis novel.</p></article>
+  <article class="card"><div class="emoji">🎮</div><h3>Coba</h3><p>Jawab skenario dan kuis untuk mendapatkan skor.</p></article>
+  <article class="card"><div class="emoji">💭</div><h3>Renungkan</h3><p>Catat hal yang sudah dipahami dan yang perlu dipelajari lagi.</p></article>
+ </div>
+</section>
+<section class="panel" id="materi">
+ <div class="section-head"><div class="section-icon">📚</div><div><h2>Galeri Jenis-Jenis Novel</h2><p>Kenali ciri utama dan contoh situasi dari setiap jenis.</p></div></div>
+ <div class="grid">
+  <article class="card"><div class="emoji">💗</div><span class="tag">Perasaan</span><h3>Novel Romantis</h3><p>Berpusat pada hubungan, kasih sayang, dan konflik perasaan antartokoh.</p><p class="small"><b>Contoh situasi:</b> Dua sahabat belajar memahami perasaan dan pilihan masing-masing.</p></article>
+  <article class="card"><div class="emoji">🕵️</div><span class="tag">Misteri</span><h3>Novel Detektif</h3><p>Mengandung teka-teki atau kasus yang dipecahkan melalui petunjuk dan penalaran.</p><p class="small"><b>Contoh situasi:</b> Seorang siswa mencari tahu siapa yang menghilangkan piala sekolah.</p></article>
+  <article class="card"><div class="emoji">🐉</div><span class="tag">Imajinasi</span><h3>Novel Fantasi</h3><p>Menghadirkan dunia khayal, sihir, makhluk ajaib, atau aturan yang berbeda dari dunia nyata.</p><p class="small"><b>Contoh situasi:</b> Seorang remaja menemukan perpustakaan yang menyimpan portal ke negeri awan.</p></article>
+  <article class="card"><div class="emoji">🚀</div><span class="tag">Teknologi</span><h3>Novel Fiksi Ilmiah</h3><p>Mengembangkan cerita melalui ilmu pengetahuan, teknologi, ruang angkasa, atau masa depan.</p><p class="small"><b>Contoh situasi:</b> Tim pelajar merancang robot untuk menyelamatkan kota dari banjir.</p></article>
+  <article class="card"><div class="emoji">🏛️</div><span class="tag">Masa lampau</span><h3>Novel Sejarah</h3><p>Mengangkat latar masa lalu atau peristiwa sejarah, sering memadukan fakta dan tokoh rekaan.</p><p class="small"><b>Contoh situasi:</b> Seorang tokoh rekaan ikut mengalami suasana perjuangan kemerdekaan.</p></article>
+  <article class="card"><div class="emoji">🌱</div><span class="tag">Kehidupan</span><h3>Novel Realistis</h3><p>Menggambarkan kehidupan yang masuk akal dan dekat dengan pengalaman sehari-hari.</p><p class="small"><b>Contoh situasi:</b> Siswa berusaha menyeimbangkan sekolah, persahabatan, dan tanggung jawab keluarga.</p></article>
+  <article class="card"><div class="emoji">😄</div><span class="tag">Humor</span><h3>Novel Komedi</h3><p>Menonjolkan kejadian lucu, dialog jenaka, atau situasi yang menghibur.</p><p class="small"><b>Contoh situasi:</b> Kekacauan terjadi saat panitia kelas salah mengirim undangan acara.</p></article>
+  <article class="card"><div class="emoji">🧭</div><span class="tag">Perjalanan</span><h3>Novel Petualangan</h3><p>Mengutamakan perjalanan, tantangan, penjelajahan, dan usaha tokoh mencapai tujuan.</p><p class="small"><b>Contoh situasi:</b> Sekelompok teman menelusuri jejak peta tua di sebuah pulau.</p></article>
+  <article class="card"><div class="emoji">🌧️</div><span class="tag">Konflik batin</span><h3>Novel Psikologis</h3><p>Menekankan pikiran, emosi, motivasi, dan pergulatan batin tokoh.</p><p class="small"><b>Contoh situasi:</b> Tokoh utama harus mengatasi rasa takut untuk menyampaikan pendapat.</p></article>
+ </div>
+ <div class="callout"><b>Ingat!</b> Pengelompokan novel bisa berbeda menurut buku atau ahli. Satu novel juga dapat memadukan beberapa jenis, misalnya fantasi-petualangan atau sejarah-romantis.</div>
+ <article class="card"><h3>📌 Unsur penting dalam novel</h3><div class="grid two"><div><b>Unsur intrinsik</b><p>Tema, tokoh dan penokohan, alur, latar, sudut pandang, gaya bahasa, dan amanat.</p></div><div><b>Unsur ekstrinsik</b><p>Latar belakang pengarang, kondisi sosial-budaya, nilai, dan keadaan yang memengaruhi karya.</p></div></div></article>
+ <article class="card" style="margin-top:15px"><h3>👩‍🏫 Pandangan ahli dan sumber belajar</h3><p>Dalam kajian sastra Indonesia, novel dibahas sebagai prosa fiksi yang memiliki cerita relatif panjang serta unsur pembangun yang saling berkaitan. Untuk memperdalam materi, gunakan buku pelajaran Bahasa Indonesia dan sumber tepercaya berikut.</p><ul class="source-list"><li>Nurgiyantoro, Burhan. <i>Teori Pengkajian Fiksi.</i> Gadjah Mada University Press.</li><li>Kosasih, E. Buku pelajaran Bahasa Indonesia dan materi teks cerita fiksi.</li><li><a href="https://badanbahasa.kemdikbud.go.id/" target="_blank" rel="noopener">Badan Pengembangan dan Pembinaan Bahasa</a> — sumber kebahasaan dan kesastraan.</li><li><a href="https://kbbi.kemdikbud.go.id/" target="_blank" rel="noopener">KBBI Daring</a> — untuk memeriksa makna istilah.</li></ul><p class="small">Catatan: gunakan edisi buku yang tersedia di sekolah dan cantumkan data bibliografi lengkap sesuai buku yang benar-benar dibaca.</p></article>
+</section>
+<section class="panel" id="simulasi">
+ <div class="section-head"><div class="section-icon">🎭</div><div><h2>Simulasi: Jadilah Kurator Cerita</h2><p>Pilih jenis novel yang paling sesuai dengan skenario.</p></div></div>
+ <div id="simQuiz"></div><div class="score" id="simScore">Skor simulasi: <strong>0/8</strong><div class="progress"><span id="simBar"></span></div></div><button class="btn" onclick="grade('simQuiz','simScore','simBar')">Periksa jawaban</button> <button class="btn alt" onclick="resetQuiz('simQuiz','simScore','simBar')">Ulangi simulasi</button>
+</section>
+<section class="panel" id="belajar">
+ <div class="section-head"><div class="section-icon">🧠</div><div><h2>Belajar Sambil Bermain</h2><p>Uji pemahaman dengan pertanyaan singkat.</p></div></div>
+ <h3>Bagian A — Pilihan ganda</h3><div id="learnQuiz"></div><div class="score" id="learnScore">Skor belajar: <strong>0/8</strong><div class="progress"><span id="learnBar"></span></div></div><button class="btn" onclick="grade('learnQuiz','learnScore','learnBar')">Cek hasil</button> <button class="btn alt" onclick="resetQuiz('learnQuiz','learnScore','learnBar')">Coba lagi</button>
+ <h3 style="margin-top:26px">Bagian B — Benar atau salah</h3><div id="tfQuiz"></div><div class="score" id="tfScore">Skor benar/salah: <strong>0/5</strong><div class="progress"><span id="tfBar"></span></div></div><button class="btn" onclick="grade('tfQuiz','tfScore','tfBar')">Cek hasil</button> <button class="btn alt" onclick="resetQuiz('tfQuiz','tfScore','tfBar')">Coba lagi</button>
+</section>
+<section class="panel" id="latihan">
+ <div class="section-head"><div class="section-icon">🎯</div><div><h2>Zona Berlatih</h2><p>Kerjakan soal, lalu lihat skor dan pembahasannya.</p></div></div>
+ <div id="practiceQuiz"></div><div class="score" id="practiceScore">Skor latihan: <strong>0/15</strong><div class="progress"><span id="practiceBar"></span></div></div><button class="btn" onclick="grade('practiceQuiz','practiceScore','practiceBar')">Nilai latihan</button> <button class="btn alt" onclick="resetQuiz('practiceQuiz','practiceScore','practiceBar')">Ulangi latihan</button>
+ <article class="card" style="margin-top:18px"><h3>✍️ Latihan jawaban singkat</h3><label for="short1">1. Sebutkan tiga jenis novel dan ciri singkatnya.</label><textarea class="field" id="short1" placeholder="Tulis jawabanmu di sini..."></textarea><label for="short2">2. Apa perbedaan novel fantasi dan fiksi ilmiah?</label><textarea class="field" id="short2" placeholder="Tulis jawabanmu di sini..."></textarea><label for="short3">3. Mengapa satu novel dapat memiliki lebih dari satu jenis?</label><textarea class="field" id="short3" placeholder="Tulis jawabanmu di sini..."></textarea><button class="btn" onclick="saveAnswers()">Simpan jawaban di halaman</button><button class="btn alt" onclick="window.print()">Cetak / simpan PDF</button><p class="small" id="savedMsg" aria-live="polite"></p></article>
+</section>
+<section class="panel" id="refleksi">
+ <div class="section-head"><div class="section-icon">🌱</div><div><h2>Refleksi Diri</h2><p>Tandai kemampuan yang sudah kamu kuasai.</p></div></div>
+ <div class="card"><h3>Checklist pemahaman</h3><div class="progress"><span id="reflectionBar"></span></div><p id="reflectionText" class="small">0 dari 6 kemampuan ditandai.</p><div class="checklist" id="reflectionList">
+ <label><input type="checkbox" onchange="updateReflection()"> Saya dapat menjelaskan pengertian novel.</label>
+ <label><input type="checkbox" onchange="updateReflection()"> Saya dapat menyebutkan beberapa jenis novel.</label>
+ <label><input type="checkbox" onchange="updateReflection()"> Saya dapat membedakan fantasi dan fiksi ilmiah.</label>
+ <label><input type="checkbox" onchange="updateReflection()"> Saya dapat mengenali jenis novel dari sebuah skenario.</label>
+ <label><input type="checkbox" onchange="updateReflection()"> Saya memahami unsur intrinsik novel.</label>
+ <label><input type="checkbox" onchange="updateReflection()"> Saya dapat menjelaskan alasan pilihan saya.</label>
+ </div></div>
+ <div class="card" style="margin-top:15px"><h3>💭 Renungkan pengalaman belajarmu</h3><label for="ref1">Bagian yang paling menarik bagiku adalah…</label><textarea id="ref1" class="field" placeholder="Tuliskan refleksimu..."></textarea><label for="ref2">Hal yang masih membingungkan adalah…</label><textarea id="ref2" class="field" placeholder="Tuliskan refleksimu..."></textarea><label for="ref3">Setelah ini, aku akan…</label><textarea id="ref3" class="field" placeholder="Contoh: membaca satu novel dan mengidentifikasi jenisnya."></textarea><button class="btn" onclick="saveReflection()">Simpan refleksi</button><p id="reflectionSaved" class="small" aria-live="polite"></p></div>
+</section>
+<section class="panel" id="penutup">
+ <div class="section-head"><div class="section-icon">🏆</div><div><h2>Petualangan Selesai!</h2><p>Saatnya membawa pengetahuanmu ke cerita berikutnya.</p></div></div>
+ <article class="card"><p class="quote">“Membaca novel bukan hanya mengikuti cerita, tetapi juga belajar memahami manusia dan dunia.”</p><h3>Kesimpulan</h3><p>Novel merupakan karya prosa fiksi yang menyajikan cerita melalui tokoh, alur, latar, konflik, dan amanat. Jenis novel dapat dibedakan berdasarkan tema atau ciri cerita, misalnya romantis, detektif, fantasi, fiksi ilmiah, sejarah, realistis, komedi, petualangan, dan psikologis. Memahami ciri tiap jenis membantu pembaca mengenali cerita dan memilih bacaan yang sesuai.</p><div class="callout"><b>Tugas lanjutan:</b> Pilih satu novel yang kamu kenal. Catat jenisnya, tokoh utama, latar, konflik, dan alasan mengapa novel tersebut termasuk jenis itu.</div><button class="btn gold" onclick="go('materi')">📚 Pelajari lagi</button><button class="btn alt" onclick="window.print()">🖨️ Cetak / simpan PDF</button></article>
+ <article class="card" style="margin-top:15px"><h3>📚 Sumber referensi</h3><ul class="source-list"><li>Nurgiyantoro, Burhan. <i>Teori Pengkajian Fiksi.</i> Gadjah Mada University Press.</li><li>Buku Bahasa Indonesia yang digunakan di sekolah.</li><li><a href="https://badanbahasa.kemdikbud.go.id/" target="_blank" rel="noopener">Badan Bahasa Kemendikbud</a>.</li><li><a href="https://kbbi.kemdikbud.go.id/" target="_blank" rel="noopener">KBBI Daring</a>.</li></ul></article>
+</section>
+</main>
+<footer>HPMI Bahasa Indonesia · Tema “Dunia Novel” ✨<br><span class="small">Dibuat untuk kegiatan belajar. Jawaban dan refleksi dapat dicetak atau disimpan sebagai PDF.</span></footer>
+<script>
+const quizData={
+simQuiz:[
+["Seorang tokoh memasuki negeri yang dihuni naga dan penyihir.","Fantasi",["Fantasi","Sejarah","Realistis","Detektif"]],
+["Seorang siswa mencari petunjuk untuk mengetahui siapa yang mencuri piala.","Detektif",["Komedi","Detektif","Romantis","Fiksi ilmiah"]],
+["Cerita berfokus pada robot cerdas dan koloni manusia di Mars.","Fiksi ilmiah",["Sejarah","Realistis","Fiksi ilmiah","Psikologis"]],
+["Tokoh mengalami peristiwa pada masa perjuangan kemerdekaan.","Sejarah",["Sejarah","Fantasi","Komedi","Petualangan"]],
+["Tokoh utama berjuang mengatasi konflik perasaan dan hubungan.","Romantis",["Detektif","Romantis","Fiksi ilmiah","Sejarah"]],
+["Sekelompok teman menjelajahi hutan untuk menemukan kota tersembunyi.","Petualangan",["Psikologis","Komedi","Petualangan","Realistis"]],
+["Cerita menonjolkan salah paham lucu saat acara sekolah.","Komedi",["Komedi","Sejarah","Detektif","Fantasi"]],
+["Cerita mendalami pikiran dan pergulatan batin tokoh.","Psikologis",["Romantis","Fiksi ilmiah","Psikologis","Petualangan"]]],
+learnQuiz:[
+["Novel yang menghadirkan sihir dan dunia khayal disebut…","Fantasi",["Fantasi","Realistis","Sejarah","Detektif"]],
+["Cerita yang menggunakan teknologi masa depan sebagai unsur utama termasuk…","Fiksi ilmiah",["Komedi","Fiksi ilmiah","Romantis","Sejarah"]],
+["Jenis novel yang menekankan pemecahan kasus adalah…","Detektif",["Petualangan","Psikologis","Detektif","Realistis"]],
+["Novel realistis biasanya menggambarkan…","Kehidupan yang masuk akal",["Makhluk ajaib saja","Kehidupan yang masuk akal","Mesin waktu saja","Peristiwa tanpa konflik"]],
+["Latar masa lalu dan peristiwa sejarah menonjol pada novel…","Sejarah",["Sejarah","Komedi","Fantasi","Detektif"]],
+["Cerita dengan perjalanan dan tantangan sebagai fokus disebut…","Petualangan",["Romantis","Petualangan","Psikologis","Realistis"]],
+["Unsur yang mengatur rangkaian peristiwa cerita adalah…","Alur",["Latar","Amanat","Alur","Sudut pandang"]],
+["Pesan yang ingin disampaikan melalui cerita disebut…","Amanat",["Amanat","Tokoh","Latar","Tema"]]],
+tfQuiz:[
+["Novel dapat memadukan lebih dari satu jenis cerita.","Benar",["Benar","Salah"]],
+["Novel fantasi selalu menceritakan kejadian sejarah yang benar-benar terjadi.","Salah",["Benar","Salah"]],
+["Tokoh, alur, dan latar termasuk unsur intrinsik novel.","Benar",["Benar","Salah"]],
+["Novel realistis biasanya dekat dengan kehidupan yang masuk akal.","Benar",["Benar","Salah"]],
+["Fiksi ilmiah dapat mengangkat teknologi atau penjelajahan ruang angkasa.","Benar",["Benar","Salah"]]],
+practiceQuiz:[
+["Kisah tentang persahabatan sehari-hari di sekolah tanpa unsur ajaib paling dekat dengan…","Realistis",["Fantasi","Realistis","Fiksi ilmiah","Sejarah"]],
+["Tokoh memecahkan misteri surat anonim melalui petunjuk.","Detektif",["Detektif","Romantis","Komedi","Sejarah"]],
+["Kisah perjalanan ke planet baru dengan teknologi canggih termasuk…","Fiksi ilmiah",["Sejarah","Realistis","Fiksi ilmiah","Psikologis"]],
+["Kisah yang bertujuan menghibur melalui kejadian jenaka termasuk…","Komedi",["Komedi","Detektif","Sejarah","Fantasi"]],
+["Unsur yang menjelaskan tempat dan waktu kejadian adalah…","Latar",["Tema","Latar","Amanat","Penokohan"]],
+["Gagasan pokok yang mendasari cerita disebut…","Tema",["Tema","Alur","Sudut pandang","Dialog"]],
+["Cara pengarang menggambarkan sifat tokoh disebut…","Penokohan",["Latar","Penokohan","Amanat","Konflik"]],
+["Novel yang berfokus pada hubungan kasih sayang disebut…","Romantis",["Detektif","Romantis","Petualangan","Fiksi ilmiah"]],
+["Cerita dengan tokoh rekaan dalam suasana masa lampau dapat termasuk…","Sejarah",["Sejarah","Komedi","Fiksi ilmiah","Realistis"]],
+["Novel psikologis menekankan…","Pikiran dan konflik batin tokoh",["Pikiran dan konflik batin tokoh","Penjelasan alat saja","Teka-teki kriminal saja","Peristiwa lucu saja"]],
+["Sudut pandang berkaitan dengan…","Posisi pencerita dalam kisah",["Posisi pencerita dalam kisah","Tempat kejadian","Pesan cerita","Urutan waktu saja"]],
+["Konflik dalam cerita berarti…","Pertentangan atau masalah yang dihadapi tokoh",["Judul novel","Pertentangan atau masalah yang dihadapi tokoh","Nama pengarang","Daftar isi"]],
+["Novel petualangan biasanya menonjolkan…","Perjalanan dan tantangan",["Perjalanan dan tantangan","Penjelasan definisi","Kumpulan data saja","Dialog tanpa cerita"]],
+["Jika cerita memadukan sihir dan perjalanan berbahaya, jenisnya dapat disebut…","Fantasi-petualangan",["Fantasi-petualangan","Realistis saja","Sejarah saja","Detektif saja"]],
+["Untuk menentukan jenis novel, pembaca sebaiknya memperhatikan…","Isi, tema, dan ciri cerita",["Panjang judul saja","Warna sampul saja","Isi, tema, dan ciri cerita","Harga buku saja"]]]
+};
+function renderQuiz(id,data){const host=document.getElementById(id);host.innerHTML=data.map((q,i)=>`<div class="quiz" data-answer="${q[1].replace(/"/g,'&quot;')}"><p>${i+1}. ${q[0]}</p><div class="options">${q[2].map((op,j)=>`<label class="option"><input type="radio" name="${id}_${i}" value="${op.replace(/"/g,'&quot;')}"> <span>${String.fromCharCode(65+j)}. ${op}</span></label>`).join("")}</div><div class="feedback" aria-live="polite"></div></div>`).join("")}
+Object.entries(quizData).forEach(([id,data])=>renderQuiz(id,data));
+function grade(id,scoreId,barId){const cards=[...document.querySelectorAll(`#${id} .quiz`)];let score=0;cards.forEach(c=>{const ans=c.dataset.answer;const selected=c.querySelector("input:checked");const f=c.querySelector(".feedback");if(selected&&selected.value===ans){score++;f.textContent="✓ Benar!";f.className="feedback good"}else{f.textContent=selected?`Belum tepat. Jawaban: ${ans}.`:`Belum dijawab. Jawaban: ${ans}.`;f.className="feedback bad"}});document.getElementById(scoreId).querySelector("strong").textContent=`${score}/${cards.length}`;document.getElementById(barId).style.width=`${score/cards.length*100}%`}
+function resetQuiz(id,scoreId,barId){document.querySelectorAll(`#${id} input`).forEach(x=>x.checked=false);document.querySelectorAll(`#${id} .feedback`).forEach(x=>{x.textContent="";x.className="feedback"});document.getElementById(scoreId).querySelector("strong").textContent=`0/${document.querySelectorAll(`#${id} .quiz`).length}`;document.getElementById(barId).style.width="0%"}
+function go(id){document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("active",p.id===id));document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===id));window.scrollTo({top:0,behavior:"smooth"})}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>go(b.dataset.tab)));
+function updateReflection(){const boxes=[...document.querySelectorAll("#reflectionList input")];const n=boxes.filter(b=>b.checked).length;document.getElementById("reflectionBar").style.width=`${n/boxes.length*100}%`;document.getElementById("reflectionText").textContent=`${n} dari ${boxes.length} kemampuan ditandai.`}
+function saveAnswers(){const values=["short1","short2","short3"].map(id=>document.getElementById(id).value.trim());document.getElementById("savedMsg").textContent=values.some(Boolean)?"Jawaban sudah tersimpan di halaman ini. Gunakan Cetak / simpan PDF agar bisa menyimpan salinannya.":"Isi minimal satu jawaban terlebih dahulu."}
+function saveReflection(){const values=["ref1","ref2","ref3"].map(id=>document.getElementById(id).value.trim());document.getElementById("reflectionSaved").textContent=values.some(Boolean)?"Refleksi sudah terisi di halaman ini. Cetak / simpan PDF agar tidak hilang saat halaman ditutup.":"Tuliskan refleksimu terlebih dahulu."}
+</script>
+</body></html>
